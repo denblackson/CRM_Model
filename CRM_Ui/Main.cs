@@ -22,7 +22,8 @@ namespace CRM_Ui
 
         private void ProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var catalogProducts = new Catalog<Product>(db.Products);
+            catalogProducts.Show();
         }
 
         private void SellerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,7 +46,12 @@ namespace CRM_Ui
 
         private void addSellerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            var form = new SellerForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                db.Sellers.Add(form.Seller);
+                db.SaveChanges();
+            }
         }
 
         private void addCustomerToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -60,7 +66,12 @@ namespace CRM_Ui
 
         private void addGoodToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var form = new ProductForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                db.Products.Add(form.Product);
+                db.SaveChanges();
+            }
         }
     }
 }
