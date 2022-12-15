@@ -59,7 +59,5 @@ namespace CRM_BL.Model.Tests
                 Assert.AreEqual(expectedResult[i], carResult[i]);
             }
         }
-
-        
     }
 }
